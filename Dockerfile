@@ -33,8 +33,8 @@ typogrify \
 wsgiref
 
 # Mount volume
-RUN mkdir /project
-VOLUME /project
+#RUN mkdir /project
+#VOLUME /project
 
 # Add certs to allow git pull
 ADD ssh/id_rsa /root/.ssh/
