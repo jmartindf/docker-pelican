@@ -32,13 +32,18 @@ smartypants \
 typogrify \
 wsgiref
 
-# Mount volume
-#RUN mkdir /project
-#VOLUME /project
-
-# Add certs to allow git pull
+# Add certs to allow git pull / push
 ADD ssh/id_rsa /root/.ssh/
 ADD ssh/id_rsa.pub /root/.ssh/
 ADD ssh/known_hosts /root/.ssh/
+ADD gnupg/gpg.conf /root/.gnupg/
+ADD gnupg/pubring.gpg /root/.gnupg/
+ADD gnupg/secring.gpg /root/.gnupg/
+ADD git/.gitconfig /root/
+
 RUN chmod -R 700 /root/.ssh
 RUN chown -R root:root /root/.ssh
+RUN chmod -R 700 /root/.gnupg
+RUN chown -R root:root /root/.gnupg
+RUN chmod 700 /root/.gitconfig
+RUN chown root:root /root/.gitconfig

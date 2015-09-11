@@ -1,3 +1,4 @@
 .git?
 *.md
 run.sh
+.DS_Store

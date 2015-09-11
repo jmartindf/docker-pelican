@@ -3,3 +3,7 @@ ssh/id_rsa.pub
 ssh/known_hosts
 pelican-plugins
 pelican-themes
+.gitconfig
+gnupg/gpg.conf
+gnupg/pubring.gpg
+gnupg/secring.gpg
