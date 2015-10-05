@@ -3,36 +3,36 @@ MAINTAINER Chris Ramsay <chris@ramsay-family.net>
 
 # Update & add prerequisites
 RUN apt-get -y update && apt-get install -y \
-python \
-python-dev \
-python-pip \
-git
+  python \
+  python-dev \
+  python-pip \
+  git
 
 # Python packages
 RUN pip install \
-Fabric \
-Jinja2 \
-Markdown \
-MarkupSafe \
-Pygments \
-Unidecode \
-argparse \
-beautifulsoup4 \
-blinker \
-docutils \
-ecdsa \
-feedgenerator \
-paramiko \
-pelican \
-pycrypto \
-python-dateutil \
-pytz \
-six \
-smartypants \
-typogrify \
-wsgiref
+  Fabric \
+  Jinja2 \
+  Markdown \
+  MarkupSafe \
+  Pygments \
+  Unidecode \
+  argparse \
+  beautifulsoup4 \
+  blinker \
+  docutils \
+  ecdsa \
+  feedgenerator \
+  paramiko \
+  pelican \
+  pycrypto \
+  python-dateutil \
+  pytz \
+  six \
+  smartypants \
+  typogrify \
+  wsgiref
 
-# Add certs to allow git pull / push
+# Add certs to allow digitally signed git pull / push
 ADD ssh/id_rsa /root/.ssh/
 ADD ssh/id_rsa.pub /root/.ssh/
 ADD ssh/known_hosts /root/.ssh/
