@@ -1,6 +1,8 @@
 FROM debian:latest
 MAINTAINER Chris Ramsay <chris@ramsay-family.net>
 
+ ENV HOME /root
+ 
 # Update & add prerequisites
 RUN apt-get -y update && apt-get install -y \
   python \
