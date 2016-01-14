@@ -1,11 +1,6 @@
 #!/bin/bash
 
 wd=$(pwd)
-
-# Maps simpleHTTPServer 8000 to 80 externally
-# Makes blog directory appear in /project
-# Makes pelican plugins dir appear in /project
-# Makes pelican themes dir appear in /project
 docker rm -f pelicanbox
 docker run \
 --name pelicanbox \
