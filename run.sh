@@ -1,5 +1,9 @@
 #!/bin/bash
 
+###
+# Add more mounts for your projects after the git/gnupg/ssh ones
+# e.g. -v ~/stuff/myproject:/project \
+
 wd=$(pwd)
 docker rm -f pelicanbox
 docker run \

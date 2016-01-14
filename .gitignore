@@ -7,3 +7,4 @@ pelican-themes
 gnupg/gpg.conf
 gnupg/pubring.gpg
 gnupg/secring.gpg
+wrun.sh
