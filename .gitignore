@@ -4,7 +4,6 @@ ssh/known_hosts
 pelican-plugins
 pelican-themes
 .gitconfig
-gnupg/gpg.conf
-gnupg/pubring.gpg
-gnupg/secring.gpg
+gnupg/*
+!gnupg/README.md
 wrun.sh
