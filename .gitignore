@@ -1,9 +1,10 @@
-ssh/id_rsa
-ssh/id_rsa.pub
-ssh/known_hosts
 pelican-plugins
 pelican-themes
 .gitconfig
+git/*
+!git/README.md
 gnupg/*
 !gnupg/README.md
+ssh/*
+!ssh/README.md
 wrun.sh
