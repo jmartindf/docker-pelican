@@ -30,10 +30,10 @@ do_build_version()
 do_release()
 {
     do_restore
-    sed -i.bak 's#BUILD_DATE#'"$BUILD_DATE"'#g' $DOCKERFILE
-    sed -i.bak 's#VCS_REF#'"$VCS_REF"'#g' $DOCKERFILE
-    sed -i.bak 's#VCS_URL#'"$VCS_URL"'#g' $DOCKERFILE
-    sed -i.bak 's#VERSION#'"$VERSION"'#g' $DOCKERFILE
+    sed -i.bak 's#r_BUILD_DATE#'"$BUILD_DATE"'#g' $DOCKERFILE
+    sed -i.bak 's#r_VCS_REF#'"$VCS_REF"'#g' $DOCKERFILE
+    sed -i.bak 's#r_VCS_URL#'"$VCS_URL"'#g' $DOCKERFILE
+    sed -i.bak 's#r_VERSION#'"$VERSION"'#g' $DOCKERFILE
     rm -f $DOCKERFILE.bak
 }
 
