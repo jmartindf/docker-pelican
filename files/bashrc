@@ -16,3 +16,13 @@ shopt -s histappend
 # Append commands to the history every time a prompt is shown,
 # instead of after closing the session.
 PROMPT_COMMAND='history -a'
+
+# Make some possibly destructive commands more interactive.
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+
+# Add some easy shortcuts for formatted directory listings and add a touch of color.
+alias ll='ls -lF'
+alias la='ls -alF'
+alias ls='ls -F'
