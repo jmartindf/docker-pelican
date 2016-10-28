@@ -73,6 +73,6 @@ Used in order to reinstate the normal `Dockerfile` for continuing development. U
 
 ***
 
-[![](https://images.microbadger.com/badges/image/chrisramsay/docker-pelican.svg)](https://microbadger.com/images/chrisramsay/docker-pelican "Get your own version badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/chrisramsay/docker-pelican.svg)](https://microbadger.com/images/chrisramsay/docker-pelican "Get your own image badge on microbadger.com")
 
 [![](https://images.microbadger.com/badges/version/chrisramsay/docker-pelican.svg)](https://microbadger.com/images/chrisramsay/docker-pelican "Get your own version badge on microbadger.com")
