@@ -7,24 +7,17 @@ VCS_URL=$(git config --get remote.origin.url)
 VERSION=$(cat VERSION)
 IMAGE=chrisramsay/docker-pelican
 
-do_build_latest()
+do_build()
 {
     do_restore
     docker build --build-arg BUILD_DATE=$BUILD_DATE \
                  --build-arg VCS_REF=$VCS_REF \
                  --build-arg VCS_URL=$VCS_URL \
                  --build-arg VERSION=$VERSION \
-                 -t $IMAGE:latest ../
-}
-
-do_build_version()
-{
-    do_restore
-    docker build --build-arg BUILD_DATE=$BUILD_DATE \
-                 --build-arg VCS_REF=$VCS_REF \
-                 --build-arg VCS_URL=$VCS_URL \
-                 --build-arg VERSION=$VERSION \
-                 -t $IMAGE:$VERSION ../
+                 -t $IMAGE:$VERSION ../ &&
+                 (
+                    docker tag $IMAGE:$VERSION $IMAGE:latest
+                 )
 }
 
 do_release()
@@ -43,11 +36,8 @@ do_restore()
 }
 
 case "$1" in
-    build-latest)
-        do_build_latest
-        ;;
-    build-version)
-        do_build_version
+    build)
+        do_build
         ;;
     release)
         do_release
@@ -56,7 +46,7 @@ case "$1" in
         do_restore
         ;;
 *)
-echo "Usage: $NAME {build-latest|build-version|release|restore}" >&2
+echo "Usage: $NAME {build|release|restore}" >&2
 exit 1
 esac
 
