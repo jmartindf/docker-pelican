@@ -44,13 +44,9 @@ Edit the `run.sh` file to add as many extra mount commands as you need.
 
 There is a `build.sh` file packaged here. This is to help with further development of the container. One of a number of possible options must be passed at run time.
 
-### build-latest
+### build
 
-Runs the standard `docker build` command with a few build arguments; tags as latest but picks up build version from the `VERSION` file.
-
-### build-version
-
-Runs the standard `docker build` command with a few build arguments; tags and adds build version from `VERSION` file.
+Runs the standard `docker build` command with a few build arguments; tags as both verson and latest picking up build version from the `VERSION` file.
 
 ### release
 
@@ -67,7 +63,7 @@ Used in order to reinstate the normal `Dockerfile` for continuing development. U
 * Bump the version number in `build/VERSION`
 * Run `$ ./build.sh restore` to set up a clean `Dockerfile`
 * Make any required changes to `build/Dockerfile.tmpl`
-* Run `$ ./build.sh build-version` or `$ ./build.sh build-latest` as required
+* Run `$ ./build.sh build` to build current tag and latest
 * Once all the work is complete, run `$ ./build.sh release`
 * Merge and tag the release
 
