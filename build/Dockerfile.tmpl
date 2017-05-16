@@ -1,5 +1,5 @@
 FROM debian:latest
-MAINTAINER Chris Ramsay <chris@ramsay-family.net>
+MAINTAINER Joe Martin <joe@desertflood.com>
 
 ENV HOME /root
 
@@ -11,22 +11,33 @@ ARG VERSION
 LABEL org.label-schema.build-date="r_BUILD_DATE" \
       org.label-schema.name="aws-gen" \
       org.label-schema.description="Machine for maintaining a Pelican web site" \
-      org.label-schema.url="https://github.com/chrisramsay/docker-pelican" \
+      org.label-schema.url="https://github.com/jmartindf/docker-pelican" \
       org.label-schema.vcs-ref="r_VCS_REF" \
       org.label-schema.vcs-url="r_VCS_URL" \
-      org.label-schema.vendor="Chris Ramsay" \
+      org.label-schema.vendor="Joe Martin" \
       org.label-schema.version="r_VERSION" \
       org.label-schema.schema-version="1.0"
 
 RUN apt-get -y update && apt-get install -y \
-  python \
-  python-dev \
-  python-pip \
-  git
+  python3.4 \
+  python3.4-dev \
+  python3-pip \
+  libffi-dev \
+  libssl-dev \
+  locales \
+  git && \
+  sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen && locale-gen
 
 WORKDIR /srv
 ADD requirements.txt /srv/requirements.txt
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
+  update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 && \
+  pip install --upgrade pip && \
+  update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip 2 && \
+  pip install -r requirements.txt
 
 ADD files/bashrc /root/.bashrc
+
+# Cleanup the container
+RUN apt-get clean && \
+        rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
