@@ -1,0 +1,3 @@
+[submodule "buildserver"]
+	path = buildserver
+	url = git@bitbucket.org:jmartindf/pelican-buildserver.git
