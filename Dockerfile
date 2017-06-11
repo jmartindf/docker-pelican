@@ -30,7 +30,8 @@ RUN apt-get -y update && apt-get install -y \
   update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
   update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 && \
   pip install --upgrade pip && \
-  update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip 2
+  update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip 2 && \
+  git clone --recursive https://github.com/getpelican/pelican-plugins.git /pelican-plugins
 
 ADD requirements.txt /srv/requirements.txt
 WORKDIR /srv
