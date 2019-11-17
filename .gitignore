@@ -66,3 +66,4 @@ gnupg/*
 ssh/*
 !ssh/README.md
 /*.sh
+.DS_Store
