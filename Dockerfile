@@ -2,7 +2,7 @@ FROM debian:latest
 MAINTAINER Joe Martin <joe@desertflood.com>
 
 ENV HOME /root
-ENV HUGO_VERSION=0.53
+ENV HUGO_VERSION=0.59.1
 #ENV HUGO_TYPE=
 ENV HUGO_TYPE=_extended
 ENV HUGO_ID=hugo${HUGO_TYPE}_${HUGO_VERSION}
@@ -12,11 +12,11 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VCS_URL
 ARG VERSION
-LABEL org.label-schema.build-date="2019-01-01T21:13:20Z" \
+LABEL org.label-schema.build-date="2019-11-17T13:30:35Z" \
       org.label-schema.name="aws-gen" \
       org.label-schema.description="Machine for maintaining a Pelican web site" \
       org.label-schema.url="https://github.com/jmartindf/docker-pelican" \
-      org.label-schema.vcs-ref="41c1ea257285ed3b08b364cabf503b5c78b90f01" \
+      org.label-schema.vcs-ref="92bdd5f59990438182fc8cb0d223e1fb280e7abf" \
       org.label-schema.vcs-url="git@github.com:jmartindf/docker-pelican.git" \
       org.label-schema.vendor="Joe Martin" \
       org.label-schema.version="1.1.0" \
@@ -36,6 +36,10 @@ RUN apt-get -y update && apt-get install -y \
   pip install --upgrade pip && \
   update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip 2 && \
   git clone --recursive https://github.com/getpelican/pelican-plugins.git /pelican-plugins
+
+# For future reference
+# cd /pelican-plugins
+# git checkout `git rev-list -n 1 --first-parent --before="2019-01-01 14:14" master`
 
 ADD requirements.txt /srv/requirements.txt
 WORKDIR /srv
