@@ -2,7 +2,7 @@ FROM debian:latest
 MAINTAINER Joe Martin <joe@desertflood.com>
 
 ENV HOME /root
-ENV HUGO_VERSION=0.59.1
+ENV HUGO_VERSION=0.60.0
 #ENV HUGO_TYPE=
 ENV HUGO_TYPE=_extended
 ENV HUGO_ID=hugo${HUGO_TYPE}_${HUGO_VERSION}
@@ -12,14 +12,14 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VCS_URL
 ARG VERSION
-LABEL org.label-schema.build-date="2019-11-17T13:30:35Z" \
+LABEL org.label-schema.build-date="r_BUILD_DATE" \
       org.label-schema.name="aws-gen" \
       org.label-schema.description="Machine for maintaining a Pelican web site" \
       org.label-schema.url="https://github.com/jmartindf/docker-pelican" \
-      org.label-schema.vcs-ref="92bdd5f59990438182fc8cb0d223e1fb280e7abf" \
-      org.label-schema.vcs-url="git@github.com:jmartindf/docker-pelican.git" \
+      org.label-schema.vcs-ref="r_VCS_REF" \
+      org.label-schema.vcs-url="r_VCS_URL" \
       org.label-schema.vendor="Joe Martin" \
-      org.label-schema.version="1.1.0" \
+      org.label-schema.version="r_VERSION" \
       org.label-schema.schema-version="1.0"
 
 RUN apt-get -y update && apt-get install -y \
