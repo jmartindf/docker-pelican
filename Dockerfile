@@ -12,14 +12,14 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VCS_URL
 ARG VERSION
-LABEL org.label-schema.build-date="r_BUILD_DATE" \
+LABEL org.label-schema.build-date="2019-11-28T19:56:05Z" \
       org.label-schema.name="aws-gen" \
       org.label-schema.description="Machine for maintaining a Pelican web site" \
       org.label-schema.url="https://github.com/jmartindf/docker-pelican" \
-      org.label-schema.vcs-ref="r_VCS_REF" \
-      org.label-schema.vcs-url="r_VCS_URL" \
+      org.label-schema.vcs-ref="6827933bf5a0546c3fb35017cd029a056b499d01" \
+      org.label-schema.vcs-url="git@github.com:jmartindf/docker-pelican.git" \
       org.label-schema.vendor="Joe Martin" \
-      org.label-schema.version="r_VERSION" \
+      org.label-schema.version="1.1.0" \
       org.label-schema.schema-version="1.0"
 
 RUN apt-get -y update && apt-get install -y \
