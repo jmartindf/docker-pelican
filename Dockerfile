@@ -1,31 +1,26 @@
-ARG ARCH=arm64v8
-FROM ${ARCH}/debian:bullseye
+FROM debian:bullseye
 MAINTAINER Joe Martin <joe@desertflood.com>
 
 ENV HOME /root
 ARG HUGO_VERSION=0.100.1
 ARG HUGO_TYPE=
 #ENV HUGO_TYPE=_extended
+ARG TARGETPLATFORM
 
 # Build-time metadata as defined at http://label-schema.org
 ARG BUILD_DATE
 ARG VCS_REF
 ARG VCS_URL
 ARG VERSION
-LABEL org.label-schema.build-date="r_BUILD_DATE" \
+LABEL org.label-schema.build-date="2022-06-01T23:27:14Z" \
       org.label-schema.name="aws-gen" \
       org.label-schema.description="Machine for maintaining a Pelican web site" \
       org.label-schema.url="https://github.com/jmartindf/docker-pelican" \
-      org.label-schema.vcs-ref="r_VCS_REF" \
-      org.label-schema.vcs-url="r_VCS_URL" \
+      org.label-schema.vcs-ref="0e4f9b241f1fec04c89e5a41bbaebb887c94e8bc" \
+      org.label-schema.vcs-url="git@github.com:jmartindf/docker-pelican.git" \
       org.label-schema.vendor="Joe Martin" \
-      org.label-schema.version="r_VERSION" \
+      org.label-schema.version="1.3.0" \
       org.label-schema.schema-version="1.0"
-
-# Install Hugo
-ADD build/gohugo.sh /tmp
-RUN /tmp/gohugo.sh \
-  && rm -rf /tmp/gohugo.sh
 
 RUN apt-get -y update && apt-get install -y \
   python3.9 \
@@ -34,18 +29,25 @@ RUN apt-get -y update && apt-get install -y \
   libffi-dev \
   libssl-dev \
   locales \
-  git && \
+  git \
+  wget && \
   sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen && locale-gen && \
   update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
   update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 && \
   pip install --upgrade pip && \
   update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip 2 && \
   git clone --recursive https://github.com/getpelican/pelican-plugins.git /pelican-plugins
+#
+## For future reference
+## cd /pelican-plugins
+## git checkout `git rev-list -n 1 --first-parent --before="2019-01-01 14:14" master`
 
-# For future reference
-# cd /pelican-plugins
-# git checkout `git rev-list -n 1 --first-parent --before="2019-01-01 14:14" master`
+# Install Hugo
+ADD build/gohugo.sh /tmp/gohugo.sh
+RUN /tmp/gohugo.sh \
+  && rm -rf /tmp/gohugo.sh
 
+# Install Pelican and dependencies
 ADD requirements.txt /srv/requirements.txt
 WORKDIR /srv
 RUN pip install -r requirements.txt

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# docker buildx create --platform linux/amd64,linux/arm64/v8 --use
+
 DOCKERFILE=../Dockerfile
 BUILD_DATE=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
 VCS_REF=$(git rev-parse HEAD)
@@ -10,10 +12,13 @@ IMAGE=jmartindf/docker-pelican
 do_build()
 {
     do_restore
-    docker build --build-arg BUILD_DATE=$BUILD_DATE \
+    #docker buildx build --platform linux/arm64 --load \
+    docker buildx build --platform linux/arm64,linux/amd64 \
+                 --build-arg BUILD_DATE=$BUILD_DATE \
                  --build-arg VCS_REF=$VCS_REF \
                  --build-arg VCS_URL=$VCS_URL \
                  --build-arg VERSION=$VERSION \
+                 --push \
                  -t $IMAGE:$VERSION ../ &&
                  (
                     docker tag $IMAGE:$VERSION $IMAGE:latest
