@@ -12,14 +12,14 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VCS_URL
 ARG VERSION
-LABEL org.label-schema.build-date="2022-06-01T23:27:14Z" \
+LABEL org.label-schema.build-date="2022-06-02T02:22:48Z" \
       org.label-schema.name="aws-gen" \
       org.label-schema.description="Machine for maintaining a Pelican web site" \
       org.label-schema.url="https://github.com/jmartindf/docker-pelican" \
-      org.label-schema.vcs-ref="0e4f9b241f1fec04c89e5a41bbaebb887c94e8bc" \
+      org.label-schema.vcs-ref="28cf3ddfae0b43a93ec017a1b79be4678362f782" \
       org.label-schema.vcs-url="git@github.com:jmartindf/docker-pelican.git" \
       org.label-schema.vendor="Joe Martin" \
-      org.label-schema.version="1.3.0" \
+      org.label-schema.version="1.4.0" \
       org.label-schema.schema-version="1.0"
 
 RUN apt-get -y update && apt-get install -y \
@@ -30,7 +30,8 @@ RUN apt-get -y update && apt-get install -y \
   libssl-dev \
   locales \
   git \
-  wget && \
+  wget \
+  rsync && \
   sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen && locale-gen && \
   update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
   update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 && \
