@@ -2,7 +2,7 @@ FROM debian:bullseye
 MAINTAINER Joe Martin <joe@desertflood.com>
 
 ENV HOME /root
-ARG HUGO_VERSION=0.100.1
+ARG HUGO_VERSION=0.105.0
 ARG HUGO_TYPE=
 #ENV HUGO_TYPE=_extended
 ARG TARGETPLATFORM
@@ -12,14 +12,14 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VCS_URL
 ARG VERSION
-LABEL org.label-schema.build-date="2022-06-02T02:22:48Z" \
+LABEL org.label-schema.build-date="2022-11-14T23:04:25Z" \
       org.label-schema.name="aws-gen" \
       org.label-schema.description="Machine for maintaining a Pelican web site" \
       org.label-schema.url="https://github.com/jmartindf/docker-pelican" \
-      org.label-schema.vcs-ref="28cf3ddfae0b43a93ec017a1b79be4678362f782" \
+      org.label-schema.vcs-ref="3ec6ee28a992b4daab0d1ec1a4418d77bb3b9f44" \
       org.label-schema.vcs-url="git@github.com:jmartindf/docker-pelican.git" \
       org.label-schema.vendor="Joe Martin" \
-      org.label-schema.version="1.4.0" \
+      org.label-schema.version="1.4.1" \
       org.label-schema.schema-version="1.0"
 
 RUN apt-get -y update && apt-get install -y \
