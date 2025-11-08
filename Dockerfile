@@ -12,11 +12,11 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VCS_URL
 ARG VERSION
-LABEL org.label-schema.build-date="2022-11-14T23:04:25Z" \
+LABEL org.label-schema.build-date="2025-11-08T01:16:28Z" \
       org.label-schema.name="aws-gen" \
       org.label-schema.description="Machine for maintaining a Pelican web site" \
       org.label-schema.url="https://github.com/jmartindf/docker-pelican" \
-      org.label-schema.vcs-ref="3ec6ee28a992b4daab0d1ec1a4418d77bb3b9f44" \
+      org.label-schema.vcs-ref="e521f3c78bab91350224df38919cec3d5b451908" \
       org.label-schema.vcs-url="git@github.com:jmartindf/docker-pelican.git" \
       org.label-schema.vendor="Joe Martin" \
       org.label-schema.version="1.4.1" \
@@ -35,9 +35,11 @@ RUN apt-get -y update && apt-get install -y \
   sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen && locale-gen && \
   update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
   update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 && \
-  pip install --upgrade pip && \
-  update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip 2 && \
   git clone --recursive https://github.com/getpelican/pelican-plugins.git /pelican-plugins
+
+#  pip install "pip<24.1" && \
+#  update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip 2 && \
+
 #
 ## For future reference
 ## cd /pelican-plugins

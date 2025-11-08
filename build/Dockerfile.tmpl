@@ -35,9 +35,11 @@ RUN apt-get -y update && apt-get install -y \
   sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen && locale-gen && \
   update-alternatives --install /usr/bin/python python /usr/bin/python3 1 && \
   update-alternatives --install /usr/bin/pip pip /usr/bin/pip3 1 && \
-  pip install --upgrade pip && \
-  update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip 2 && \
   git clone --recursive https://github.com/getpelican/pelican-plugins.git /pelican-plugins
+
+#  pip install "pip<24.1" && \
+#  update-alternatives --install /usr/bin/pip pip /usr/local/bin/pip 2 && \
+
 #
 ## For future reference
 ## cd /pelican-plugins
